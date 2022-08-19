@@ -1,0 +1,29 @@
+
+name: Find upcoming feature flags
+
+on:
+  push:
+    branches: [ "main" ]
+
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Find upcoming features
+        uses: ByK95/cron-action@d65b8c3522784bfc81306941b8770bb9c8abcb81
+        with:
+          matcher: "is_upcoming_features_enabled\\('ENG-[0-9]{0,6}'\\)"
+          identifier_matcher: "ENG-\\d{0,6}"
+          file_type: "py"
+          cutoff_in_days: "20"
+
