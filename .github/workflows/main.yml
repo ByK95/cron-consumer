@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Find upcoming features
-        uses: ByK95/cron-action/.github/workflows/ongoing-feature-flags/@v1
+        uses: ByK95/cron-action/.github/workflows/ongoing-feature-flags.yml/@v1
         with:
           matcher: "is_upcoming_features_enabled\\('ENG-[0-9]{0,6}'\\)"
           identifier_matcher: "ENG-\\d{0,6}"
