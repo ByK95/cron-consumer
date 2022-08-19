@@ -11,19 +11,10 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  cron:
-    runs-on: ubuntu-latest
-
-
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      - name: Find upcoming features
-        uses: ByK95/cron-action/.github/workflows/ongoing-feature-flags.yml@v1
-        with:
-          matcher: "is_upcoming_features_enabled\\('ENG-[0-9]{0,6}'\\)"
-          identifier_matcher: "ENG-\\d{0,6}"
-          file_type: "py"
-          cutoff_in_days: "20"
-
+  uses: ByK95/cron-action/.github/workflows/ongoing-feature-flags.yml@v1
+  with:
+    matcher: "is_upcoming_features_enabled\\('ENG-[0-9]{0,6}'\\)"
+    identifier_matcher: "ENG-\\d{0,6}"
+    file_type: "py"
+    cutoff_in_days: "20"
+        
