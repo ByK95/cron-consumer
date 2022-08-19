@@ -11,10 +11,11 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  uses: ByK95/cron-action/.github/workflows/ongoing-feature-flags.yml@v1
-  with:
-    matcher: "is_upcoming_features_enabled\\('ENG-[0-9]{0,6}'\\)"
-    identifier_matcher: "ENG-\\d{0,6}"
-    file_type: "py"
-    cutoff_in_days: "20"
+  call-workflow-passing-data:
+    uses: ByK95/cron-action/.github/workflows/ongoing-feature-flags.yml@v1
+    with:
+      matcher: "is_upcoming_features_enabled\\('ENG-[0-9]{0,6}'\\)"
+      identifier_matcher: "ENG-\\d{0,6}"
+      file_type: "py"
+      cutoff_in_days: "20"
         
